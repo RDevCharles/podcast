@@ -1,0 +1,12 @@
+{
+  "name": "podcast",
+  "displayName": "podcast",
+  "expo": {
+    "name": "podcast",
+    "slug": "podcast",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
