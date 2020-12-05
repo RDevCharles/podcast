@@ -1,7 +1,6 @@
 //TODO: Add video implementaion
 //TODO: Add top banner to a couple screens
 
-
 import React from "react";
 
 import {
@@ -18,7 +17,9 @@ import {
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import SplashScreen from "./src/screens/SplashScreen";
+
 import HomeScreen from "./src/screens/HomeScreen";
 import MoreScreen from "./src/screens/MoreScreen";
 import VideoScreen from "./src/screens/VideoScreen";
@@ -28,36 +29,47 @@ import SavedScreen from "./src/screens/SavedScreen";
 import ProfileScreen from "./src/screens/ProfileScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TopStackScreen from "./src/components/TopStackScreen";
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
+
+const Splash = () => {
+  return (
+    <Stack.Navigator initialRouteName="Home">
+
+      <Stack.Screen name="Splash" title="Splash" component={SplashScreen} />
+      
+
+    </Stack.Navigator>
+  );
+}
+
 const Bottom = ({ navigation }) => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator >
+
+      <Stack.Screen name="Splash" title="Splash" component={SplashScreen}/>
+      <Stack.Screen name="SignIn" title="SignIn" component={SignInScreen}/>
+      
       <Stack.Screen
         options={{
-          
           headerTintColor: "white",
-         
-         
-           
-          
+
           headerStyle: {
-            backgroundColor: 'black',
-            borderBottomColor: 'red',
+            backgroundColor: "black",
+            borderBottomColor: "red",
             shadowOffset: {
-              width: 0,
+              width: 0
             }
           },
-          
-        
+
           headerRight: () => (
             <Button
               onPress={() => {
-                navigation.navigate("Sign In")
+                navigation.navigate("Sign In");
               }}
               title="Sign In"
               color="black"
@@ -68,6 +80,7 @@ const Bottom = ({ navigation }) => {
         title="home"
         component={HomeScreen}
       />
+
       <Stack.Screen name="Video" component={VideoScreen} />
       <Stack.Screen
         name="AticlesReadPage"
@@ -80,51 +93,50 @@ const Bottom = ({ navigation }) => {
 };
 
 const App = () => {
+  setTimeout(() => {
+    
+  }, 3000)
   return (
     <View style={[styles.container]}>
-      <NavigationContainer
-      >
-        <Tab.Navigator
-      screenOptions={({ route }) => ({
+      <NavigationContainer>
+        <Tab.Navigator 
+          screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
 
-          if (route.name === 'Home') {
-            iconName = focused
-              ? 'ios-home'
-              : 'ios-home';
-          } else if (route.name === 'Articles') {
-            iconName = focused ? 'ios-book' : 'ios-book';
-          }
-          else if (route.name === 'Saved') {
-            iconName = focused ? 'ios-bookmark' : 'ios-bookmark';
-          }
-          else if (route.name === 'Profile') {
-            iconName = focused ? 'ios-settings' : 'ios-settings';
-          }
+              if (route.name === "Home") {
+                iconName = focused ? "ios-home" : "ios-home";
+              } else if (route.name === "Articles") {
+                iconName = focused ? "ios-book" : "ios-book";
+              } else if (route.name === "Saved") {
+                iconName = focused ? "ios-bookmark" : "ios-bookmark";
+              } else if (route.name === "Profile") {
+                iconName = focused ? "ios-settings" : "ios-settings";
+              }
 
-          // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-      })}
-      tabBarOptions={{
-        activeTintColor: 'white',
-        inactiveTintColor: 'gray',
-        style: {
-          backgroundColor: 'black',
-          borderTopColor: 'black'
-        }
-      }
-    
-      }
->
+              // You can return any component that you like here!
+              return <Ionicons name={iconName} size={size} color={color} />;
+            }
+          })}
+          tabBarOptions={{
+            activeTintColor: "white",
+            inactiveTintColor: "gray",
+            style: {
+              backgroundColor: "black",
+              borderTopColor: "black"
+            }
+          }}
+        >
           <Tab.Screen title="Home" name="Home" component={Bottom} />
 
-          <Tab.Screen options={{
-            
-          }} title="Articles" name="Articles" component={MoreScreen} />
+          <Tab.Screen
+            options={{}}
+            title="Articles"
+            name="Articles"
+            component={MoreScreen}
+          />
           <Tab.Screen name="Saved" component={SavedScreen} />
-          <Tab.Screen name="Profile" component={ProfileScreen}/>
+          <Tab.Screen name="Profile" component={ProfileScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     </View>
@@ -149,3 +161,10 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+
+//TODO =>
+// refactor and organize all code (mainly navigators to fix splashscreen)
+//fix sign in screen
+//intergrate firebase auth
+//make dynamic ui changes according to auth (this includes saved screen)
+//clean up ui
