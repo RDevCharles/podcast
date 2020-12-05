@@ -13,7 +13,7 @@ const TitleCard = (props) => {
         <View style={titleCardstyles.container}>
         
         <TouchableOpacity onPress={() => navigation.navigate( "Video" ) }>
-        <Image style={titleCardstyles.image} source={require('../assests/images/person.jpg')} />
+                <Image style={titleCardstyles.image} source={{ uri: `${props.image}` }}/>
         <Text style={titleCardstyles.title}>{props.title}</Text>
             </TouchableOpacity>
 </View>

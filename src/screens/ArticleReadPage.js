@@ -10,18 +10,19 @@ import {
 } from "react-native";
 import { Icon } from "react-native-elements";
 
-const ArticleReadPage = () => {
+const ArticleReadPage = ({ route, navigation }) => {
+  const { articleText, articleImage, articleSummary } = route.params;
   return (
     <SafeAreaView>
       <ScrollView style={{ backgroundColor: "black", height: "100%" }}>
-        <Text style={{ color: "white", marginTop: 20 }}>Title Of Article</Text>
+        <Text style={{ color: "white", marginTop: 20 }}>{articleSummary}</Text>
         <Image
           style={{
             width: "100%",
             height: 250,
             marginTop: 20
           }}
-          source={require("../assests/images/person.jpg")}
+          source={{ uri: `${articleImage}` }}
         />
         <View style={{ flexDirection: "row", marginTop: 20 }}>
           <TouchableOpacity style={{ marginLeft: 10 }}>
@@ -33,7 +34,8 @@ const ArticleReadPage = () => {
         </View>
 
         <Text style={styles.articleText}>
-          "At vero eos et accusamus et iusto odio dignissimos ducimus qui
+          {articleText}
+          {/* "At vero eos et accusamus et iusto odio dignissimos ducimus qui
           blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
           et quas molestias excepturi sint occaecati cupiditate non provident,
           similique sunt in culpa qui officia deserunt mollitia animi, id est
@@ -50,7 +52,7 @@ const ArticleReadPage = () => {
           atque corrupti quos dolores et quas molestias excepturi sint occaecati
           cupiditate non provident, similique sunt in culpa qui officia deserunt
           mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum
-          facilis est et expedita distinctio.
+          facilis est et expedita distinctio. */}
         </Text>
         <Text style={{ color: "white", marginTop: 40 }}>
           Written by : SomeName

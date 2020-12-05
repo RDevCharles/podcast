@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect }from "react";
 import { StyleSheet, Text, View, Flatlist, SafeAreaView, ScrollView } from "react-native";
 import TitleCard from "../components/TitleCard";
 import VideoScreen from '../screens/VideoScreen';
@@ -8,21 +8,43 @@ import { useNavigation } from '@react-navigation/native';
 
 import { TouchableOpacity } from "react-native-gesture-handler";
 
+import { db } from '../firebase/firebase';
 
 
 
-const getAllVideos = () => {
 
-}
+
 
 
 const HomeScreen = () => {
+  const [videos, setVideos] = useState([])
+
+  useEffect(() => {
+    const videoData = [];
+    return db.collection("videos")
+      .onSnapshot(snapshot => {
+        snapshot.forEach(doc => {
+          videoData.push({ ...doc.data(), id: doc.id });
+        });
+        setVideos(videoData);
+    })
+  }, [])
+
+  console.log(videos)
   const navigation = useNavigation()
   return (
     <ScrollView style={styles.container}>
       <View
         style={styles.scrollView}
       >
+        {videos.map(video => {
+          return (
+            <TitleCard
+              key={video.id}
+              title={video.title}
+              image={video.thumbnail}/>
+          )
+        })}
        
         <TitleCard title="Are you enough ?" />
        

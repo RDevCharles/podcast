@@ -1,14 +1,17 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { StyleSheet, Text, View, Flatlist, SafeAreaView, Button } from "react-native";
 import { Video } from 'expo-av';
-import PexVideo from '../assests/video/pexels.mp4';
+
+
 
 const VideoScreen = ({ navigation }) => {
+
+
     return (
       <View style={vidStyles.vidContainer}>
      
              <Video
-  source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
+  source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/media-app-1ef3c.appspot.com/o/videos%2FScreen%20Recording%202020-11-28%20at%209.58.57%20PM.mp4?alt=media&token=3fe3ea19-d969-47ee-93c2-38078eb0588e' }}
   rate={1.0}
   volume={1.0}
   isMuted={false}
@@ -22,8 +25,6 @@ const VideoScreen = ({ navigation }) => {
        
     )
 }
-
-
 
 const vidStyles = StyleSheet.create({
     vidContainer: {

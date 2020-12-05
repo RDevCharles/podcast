@@ -12,7 +12,6 @@ import {
 
 import MoreCard from "../components/MoreCard";
 import { useNavigation } from "@react-navigation/native";
-
 import TopBanner from "../components/TopBanner";
 import { db } from "../firebase/firebase";
 
@@ -23,7 +22,8 @@ const MoreScreen =  () => {
 
   useEffect(() => {
     const articleData = [];
-    return db.collection("articles").onSnapshot(snapshot => {
+    return db.collection("articles")
+      .onSnapshot(snapshot => {
       snapshot.forEach(doc => {
         articleData.push({ ...doc.data(), id: doc.id });
 
@@ -36,6 +36,10 @@ const MoreScreen =  () => {
   console.log(articles)
   
   const navigation = useNavigation();
+
+  const articleData = (props) => {
+props.navigation.navigate("ArticlesReadPage"), { article: props.article}
+  }
   
   return (
     <View style={styles.container}>
@@ -47,7 +51,9 @@ const MoreScreen =  () => {
           {articles.map((article) => {
             return (
               <TouchableOpacity key={article.id} onPress={() => navigation.navigate("AticlesReadPage", {
-                article: article.article
+                articleText: `${article.article}`,
+                articleImage: `${article.image}`,
+                articleSummary:`${article.summary }`
               })}>
                 <MoreCard
                   summary={article.summary}
