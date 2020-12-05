@@ -4,12 +4,8 @@ import {
   StyleSheet,
   View,
   Text,
-  Image,
-  TouchableOpacity,
-  SafeAreaView
 } from "react-native";
 
-import TopBanner from "../components/TopBanner";
 
 const MoreCard = props => {
   return (
@@ -22,7 +18,7 @@ const MoreCard = props => {
           flexDirection: "row",
           marginLeft: 20
         }}
-        source={require("../assests/images/person.jpg")}
+        source={{ uri: `${props.pic}` }}
       >
         <View
           style={{
@@ -32,6 +28,7 @@ const MoreCard = props => {
           <Text style={{ width: "60%", color: "white", textAlign: "left" }}>
             {props.summary}
           </Text>
+          <Text style={{ color:'grey'}}>{props.type}</Text>
         </View>
       </ImageBackground>
     </View>

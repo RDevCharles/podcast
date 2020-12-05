@@ -64,7 +64,7 @@ const Bottom = ({ navigation }) => {
             />
           )
         }}
-        name="Media App"
+        name="Legal"
         title="home"
         component={HomeScreen}
       />

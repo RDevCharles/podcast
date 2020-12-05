@@ -17,7 +17,22 @@ const SavedScreen = () => {
     <View style={styles.container}>
       <TopBanner title="Saved" />
       <ScrollView>
-        <MoreCard summary="bdkmfkf wwkmfw fwlmfwlmf fmwlmflw" />
+        <MoreCard
+          summary="bdkmfkf wwkmfw fwlmfwlmf fmwlmflw"
+          type="video"
+        
+        />
+        <MoreCard
+          summary="New bodega diet that actually works"
+          type="article"
+        
+        />
+
+<MoreCard
+          summary="How much should you be saving?"
+          type="article"
+        
+        />
        
       </ScrollView>
     </View>
