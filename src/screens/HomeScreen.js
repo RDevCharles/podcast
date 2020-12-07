@@ -2,6 +2,8 @@ import React, { useState, useEffect }from "react";
 import { StyleSheet, Text, View, Flatlist, SafeAreaView, ScrollView } from "react-native";
 import TitleCard from "../components/TitleCard";
 import VideoScreen from '../screens/VideoScreen';
+import ProfileScreen from "../screens/ProfileScreen";
+import SavedScreen from "../screens/SavedScreen";
 import TopBanner from '../components/TopBanner';
 import { useNavigation } from '@react-navigation/native';
 
@@ -11,7 +13,10 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { db } from '../firebase/firebase';
 
 
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+
+const Tab = createBottomTabNavigator();
 
 
 
@@ -33,6 +38,8 @@ const HomeScreen = () => {
   console.log(videos)
   const navigation = useNavigation()
   return (
+    <>
+      <TopBanner title="Legal"/>
     <ScrollView style={styles.container}>
       <View
         style={styles.scrollView}
@@ -46,13 +53,12 @@ const HomeScreen = () => {
           )
         })}
        
-        <TitleCard title="Are you enough ?" />
-       
-        <TitleCard title="5 tips for better sex" />
-        <TitleCard title="tips to get more fit" />
-        <TitleCard title="tips to get more lit" />
+    
       </View>
+      
     </ScrollView>
+    
+    </>
   );
 };
 

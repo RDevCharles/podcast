@@ -1,11 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View} from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 const TopBanner = (props) => {
   return (
     
       <View style={styles.topBanner}>
-        <Text style={{ color: "white", textAlign: "center", marginTop: 20 ,  }}>
+        <Text style={{ color: "white", textAlign: "center", marginTop: 20 , fontSize: 20,  }}>
           {props.title}
         </Text>
       
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
     position: "relative",
     margin: 0,
-  
+    fontFamily: 'Inter_900Black' ,
     padding: 0
   }
 });

@@ -6,7 +6,7 @@ import { Input, Block, Button } from 'galio-framework';
 const ProfileScreen = () => {
   return (
     <View style={{ flex: 1, backgroundColor: "#131314", color: "white",  }}>
-          <TopBanner title="Your Profile" />
+ 
           <ScrollView>
       <View style={{ margin: 20 }}>
         <Text
@@ -40,20 +40,12 @@ const ProfileScreen = () => {
           Password
         </Text>
         <Input placeholder="password" password viewPass />
+      
        
           </View>
           <View style={{marginLeft:20}}>
-              <Button color='#737373'>Save</Button>
+              <Button color='#737373'>Sign Up</Button>
               </View>
-      <TouchableOpacity
-        style={{
-          color: "white",
-                  textAlign: "left",
-                  marginBottom:20
-        }}
-        title=" Delete Profile"
-        color="red"
-              ><Text>Delete Profile</Text></TouchableOpacity>
               </ScrollView>
     </View>
   );

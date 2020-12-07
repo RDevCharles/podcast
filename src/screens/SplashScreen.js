@@ -3,7 +3,7 @@ import {View, Text} from 'react-native';
 
 const SplashScreen = ({ navigation }) => {
     setTimeout(() => {
-        navigation.navigate("SignIn")
+        navigation.navigate("Legal")
     }, 3000);
 
     return (
